@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ai_app',
         'USER':'root',
-        'PASSWORD':'tpigl20222023',
+        'PASSWORD':'Ma*15102002',
         'HOST':'127.0.0.1',
         'PORT':'3306'
     }

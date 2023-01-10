@@ -30,6 +30,7 @@
     justify-content: space-between;
     display:flex;
     text-align: right;
+    margin-right: 5%;
     
 }
 
@@ -54,3 +55,49 @@
     
 }
 
+.logo{
+    float : left ;
+    height : 5vh;
+    width: auto;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 10vh;
+    z-index: 1;
+    
+  }
+  
+  .dropdown-content a {
+    color: #050d2d;
+    padding: 2vh 2vh ;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgb(222, 255, 243);
+    font-weight: bold;
+    }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    float: right;
+    
+}
+
+.navbar {
+  overflow: hidden;
+}
+  
+@media only screen and ( max-width:400px ){
+  
+}
+  

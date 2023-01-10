@@ -1,6 +1,13 @@
 import React, {  Component } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import "./Login.css";
+import NavBarLogin from './NavBarLogin';
+import Footer from './footer';
+import Apropos from './Apropos';
+import HomePage from './homePage'
+import { useNavigate } from 'react-router-dom';
+
 const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
 class App extends Component {
   constructor(){
@@ -42,6 +49,8 @@ class App extends Component {
     }).then(response=>response.json())
     .then((result)=>{
         alert(result);
+        window.location = '/pageuser'
+        console.log('hello')
     },
     (error)=>{
         alert("Failed to add announce");
@@ -64,10 +73,18 @@ class App extends Component {
     };
     render(){
     return <div>
-            <h2>React Google Login</h2>
-            <br />
-            <br />
-            {this.state.profile ? (
+            <NavBarLogin />
+            <div className="content">
+                <p className='txt-first'>Bienvenue dans Estate.io</p>
+                <div className='textone'>
+                    Bienvenue dans Estate.io
+                </div>
+                    <h1>Publiez et consultez des annonces immobilières gratuitement !</h1>
+                <p>
+                    text text texte ettgfhdghgfhdstext text t
+                </p>
+                <a href="" className="Seconnecter">Se connecter avec google</a>
+                {this.state.profile ? (
                 <div>
                    
                     <h3>User Logged in</h3>
@@ -77,13 +94,16 @@ class App extends Component {
             ) : (
                 <GoogleLogin
                     clientId={clientId}
-                    buttonText="Sign in with Google"
+                    buttonText="se connecter"
                     onSuccess={this.onSuccess}
                     onFailure={this.onFailure}
                     cookiePolicy={'single_host_origin'}
                     isSignedIn={true}
                 />
             )}
+            </div>
+            <Apropos />
+            <Footer />
         </div>
     }
 }

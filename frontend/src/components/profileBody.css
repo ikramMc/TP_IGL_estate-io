@@ -1,0 +1,174 @@
+.profile-body {
+    
+    
+    margin-bottom: 20vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+    
+}
+
+.profile-line {
+    background-color: #2d3142;
+    margin-top: 1%;
+    height: 3px;
+    border-radius: 45rem;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+
+.pfp{
+    padding: 5px;
+    outline-style: solid;
+    outline-color: #2d3142;
+    border-radius: 45rem;
+    height: 40vh;
+    width: 40vh;
+    border-radius: 45rem;
+    
+}
+
+
+
+.profile-info {
+    justify-items: left;
+    margin-top: 5%; 
+}
+
+
+
+.profile-text {
+    
+    text-align: left;
+    font-size: 20px;
+    color: #2d3142;
+}
+
+.profile-name{
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    color: #2d3142;
+}
+
+.btns {
+    display: flex;
+    
+    margin-top: 5%;
+    
+}
+
+.modify-btn {
+    background-color: #67f1a4;
+    border-radius: 2rem;
+    width: 30vh;
+    height: 5vh;
+    border: 0;
+    margin-right: 2vh;
+    color: white;
+    font-weight: bold;
+}
+
+.modify-btn:hover { 
+    transform: scale(1.05);  
+}
+
+.deconnect-btn{
+    background-color: white;
+    border-radius: 2rem;
+    width: 20vh;
+    height: 5vh;
+    border-color: #2d3142;
+    border-width: 1px;
+}
+
+.deconnect-btn:hover { 
+    transform: scale(1.05); 
+}
+
+
+@media (max-width: 800px) {
+    .profile{
+        
+        justify-content: space-between;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        margin-left: 10%;
+        margin-right: 10%;
+        
+    }
+
+    .profile-name{
+        font-size: 20px;
+    }
+
+    .profile-text{
+        font-size: 15px;
+    }
+
+    .pfp{
+        height: 30vh;
+        width: 30vh;
+    }
+
+    .modify-btn {
+        
+        width: 15vh;
+        height: 5vh;
+        font-size: 10px;
+    }
+    
+    .deconnect-btn{
+        
+        width: 12vh;
+        height: 5vh;
+        font-size: 10px;
+    }
+    
+  }
+
+
+  @media (max-width: 500px) {
+    .profile{
+        
+        justify-content: space-between;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        margin-left: 10%;
+        margin-right: 10%;
+        
+    }
+
+    .profile-text{
+        font-size: 10px;
+    }
+
+    .profile-name{
+        font-size: 15px;
+    }
+
+    .pfp{
+        height: 20vh;
+        width: 20vh;
+    }
+    
+    .profile-info {
+        
+        margin-top: 5%;
+       
+    }
+
+
+  }

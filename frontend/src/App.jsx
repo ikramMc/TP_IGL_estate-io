@@ -12,12 +12,14 @@ import Login from './components/Login';
 import Footer from './components/footer';
 import Apropos from './components/Apropos';
 import AddPage from './components/AddPage';
+import AuthPage from './components/authPage';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import HomePage from './components/homePage';
 
 
 function App() {
@@ -26,9 +28,10 @@ function App() {
       <Router>
         <Routes>
           <Route path='/ajouterAnnonce' element={<AddPage />} />
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<AuthPage />} />
           <Route path="/slider" element={<AnnoncesSlider />} />
           <Route path="/slider/:slideId" element={<Try />} />
+          <Route path="/pageuser" element={<HomePage />} />
         </Routes>
       </Router>
     </>

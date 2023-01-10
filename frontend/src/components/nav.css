@@ -1,0 +1,56 @@
+.nav-elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    min-height: 5vh;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.nav-line{
+    background-color: #2d3142;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 5px;
+    border-radius: 45rem;
+}
+.nav-icon{
+    color: #2d3142;
+    font-size: 5vh;
+    padding-right:10pt;
+    
+    
+}
+
+.nav-icons {
+    
+    justify-content: space-between;
+    display:flex;
+    text-align: right;
+    
+}
+
+.nav-btn{
+  background-color:transparent ;
+  border: none; 
+  color: transparent; 
+  cursor: pointer;
+}
+
+
+
+.resp {
+    width: 100%;
+    height: auto;
+}
+
+.nav-element {
+    
+    width: 50%;
+    
+    
+}
+

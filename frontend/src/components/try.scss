@@ -1,0 +1,49 @@
+.yo {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.yo .yoyo {
+    width: 600px;
+    height: 500px;
+    padding: 30px;
+}
+
+.contentdetails {
+    padding-right: 50px;
+}
+
+.yo .bigtitle {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #67F2A1;
+}
+
+.yo .bigtitle1{
+    text-align: left;
+}
+
+.yo .simpletext{
+    text-align: left;
+    font-weight: 100;
+}
+
+.yo .t1{
+    text-align: left;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.yo .simpletext1{
+    text-align: left;
+}
+
+.yo .trait_dessus
+{
+border-top: 1.3px solid #000;
+width : 600px;
+}

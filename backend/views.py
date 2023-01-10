@@ -48,10 +48,19 @@ def UserAPI(request ,pk=0):
  elif request.method == 'POST':
        users_data = JSONParser().parse(request)
        users_serializer = UserSerializer(data=users_data)
-       if users_serializer.is_valid():
-         users_serializer.save()
-         return JsonResponse("Added Successfully", safe=False)
-       return JsonResponse("Failed To Add", safe=False)
+       print(users_serializer.is_valid())
+       user=User.objects.filter(email=users_data["email"])
+       print(user)
+       user_ser= UserSerializer(user,many=True)
+       #print(user_ser.is_valid())
+       print(user_ser.data)
+       #print( user_ser.data)
+       if users_serializer.is_valid()   : 
+         if user_ser.data==[]:   
+           users_serializer.save()
+           return JsonResponse("creating user Successfully", safe=False)
+         return JsonResponse(user_ser.data, safe=False) 
+       return JsonResponse("Failed To Add or existing account", safe=False)
  elif request.method == 'PUT':
        users_data = JSONParser().parse(request)
        print("users data")
@@ -69,8 +78,9 @@ def UserAPI(request ,pk=0):
 		 user.delete()
 		 return JsonResponse("todot Was Deleted Successfully", safe=False)				
 
+
 @csrf_exempt
-def AnnonceAPI(request,dateDebut,dateFin,wilaya,commune,motsClés,pk=0):
+def filterAPI(request,dateDebut,dateFin,wilaya,commune,motsClés,pk=0):
  if request.method=='GET':
        annonces = Annonce.objects.select_related("bienId").filter(date__lte=dateFin,date__gte=dateDebut)
        annoncesModif=Annonce.objects.none()
@@ -88,6 +98,13 @@ def AnnonceAPI(request,dateDebut,dateFin,wilaya,commune,motsClés,pk=0):
        if biens_serialize.data!=[]:
         return JsonResponse([annonces_serializer.data, biens_serialize.data], safe=False) 
        return JsonResponse("pas d'annonces", safe=False)
+ 
+@csrf_exempt
+def AnnonceAPI(request ,pk=0):
+ if request.method=='GET':
+       annonces= Annonce.objects.all()
+       annonces_serializer = AnnonceSerializer(annonces, many=True)
+       return JsonResponse(annonces_serializer.data, safe=False)
  elif request.method == 'POST':
        annonces_data = JSONParser().parse(request)
        annonces_serializer = AnnonceSerializer(data=annonces_data)

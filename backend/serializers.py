@@ -16,7 +16,7 @@ class AnnonceSerializer (serializers.ModelSerializer):
 class BienImmobilierSerializer (serializers.ModelSerializer):
  class Meta:
   model=BienImmobilier
-  fields=('bienImmobilierId','titre','description','surface','prix','wilaya','commune','adresse')
+  fields=('bienImmobilierId','titre','description','surface','prix','wilaya','commune','adresse','latitude','longitude')
 
 class ImageSerializer (serializers.ModelSerializer):
  class Meta:

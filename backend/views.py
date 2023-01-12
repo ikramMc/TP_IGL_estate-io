@@ -106,12 +106,15 @@ def AnnonceAPI(request ,pk=0):
        annonces_serializer = AnnonceSerializer(annonces, many=True)
        return JsonResponse(annonces_serializer.data, safe=False)
  elif request.method == 'POST':
+      
        annonces_data = JSONParser().parse(request)
+       print(annonces_data )
        annonces_serializer = AnnonceSerializer(data=annonces_data)
+       print(annonces_serializer)
        if annonces_serializer.is_valid():
          annonces_serializer.save()
          return JsonResponse("Added Successfully", safe=False)
-       return JsonResponse("Failed To Add annonce", safe=False)
+       return JsonResponse("Failed To Add annonces ", safe=False)
  elif request.method == 'PUT':
        annonces_data = JSONParser().parse(request)
        print("annonces data")
@@ -140,7 +143,7 @@ def BienImmobilierAPI(request ,pk=0):
        if bi_serializer.is_valid():
          b=bi_serializer.save()
          return JsonResponse(["Added Successfully",b.bienImmobilierId], safe=False)
-       return JsonResponse("wow", safe=False)
+       return JsonResponse("bien im not added", safe=False)
  elif request.method == 'PUT':
        bi_data = JSONParser().parse(request)
        print("bienim data")

@@ -18,6 +18,8 @@ class BienImmobilier(models.Model):
   wilaya=models.CharField(max_length=45,default='w') 
   commune=models.CharField(max_length=45,default='c') 
   adresse=models.CharField(max_length=80,default='a') 
+  latitude=models.FloatField(default= 36.7)
+  longitude=models.FloatField(default= 2.985)
 def upload_to(instance,filename):
   return'images/{filename}'.format(filename=filename)
 

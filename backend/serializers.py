@@ -3,22 +3,26 @@ from backend.models import User
 from backend.models import Annonce
 from backend.models import BienImmobilier
 from backend.models import  Image
+from backend.models import  Message
 class UserSerializer (serializers.ModelSerializer):
  class Meta:
   model=User
-  fields=('userId','nom','prenom','email','tel','adresse')
+  fields='__all__'
 
 class AnnonceSerializer (serializers.ModelSerializer):
  class Meta:
   model=Annonce
-  fields=('annonceId','date','userId','bienId')
+  fields='__all__'
 
 class BienImmobilierSerializer (serializers.ModelSerializer):
  class Meta:
   model=BienImmobilier
-  fields=('bienImmobilierId','titre','description','surface','prix','wilaya','commune','adresse','latitude','longitude')
-
+  fields='__all__'
+class MessageSerializer(serializers.ModelSerializer):
+ class Meta:
+  model=Message
+  fields = '__all__'
 class ImageSerializer (serializers.ModelSerializer):
  class Meta:
   model=Image
-  fields=('id','image','bienid')
+  fields='__all__'

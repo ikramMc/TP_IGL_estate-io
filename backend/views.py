@@ -13,6 +13,8 @@ from backend.serializers import AnnonceSerializer
 from backend.models import BienImmobilier
 from backend.serializers import BienImmobilierSerializer
 from backend.models import Image
+from backend.serializers import MessageSerializer
+from backend.models import Message
 from backend.serializers import ImageSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status
@@ -77,6 +79,8 @@ def UserAPI(request ,pk=0):
 		 user = User.objects.get(id=pk)
 		 user.delete()
 		 return JsonResponse("todot Was Deleted Successfully", safe=False)				
+
+
 
 
 @csrf_exempt
@@ -159,7 +163,34 @@ def BienImmobilierAPI(request ,pk=0):
  elif request.method == 'DELETE':
 		 bi = BineImmobilier.objects.get(id=pk)
 		 bi.delete()
-		 return JsonResponse("todot Was Deleted Successfully", safe=False)	         
+		 return JsonResponse("todot Was Deleted Successfully", safe=False)
+@csrf_exempt 
+def MessageAPI(request ,pk=0):
+ if request.method=='GET':
+       messages = Message.objects.all()
+       messages_serializer = MessageSerializer(bis, many=True)
+       return JsonResponse(messages_serializer.data, safe=False)
+ elif request.method == 'POST':
+       messages_data = JSONParser().parse(request)
+       print(messages_data)
+       message_serializer= MessageSerializer(data=messages_data)
+       if message_serializer.is_valid():
+         message_serializer.save()
+         return JsonResponse("message Added Successfully", safe=False)
+       return JsonResponse("message im not added", safe=False)
+ elif request.method == 'PUT':
+       message_data = JSONParser().parse(request)
+       msg = Message.objects.get(Id=message_data['msgId'])
+       msg_serializer = MessageSerializer(msg, data=message_data)
+       if msg_serializer.is_valid():
+         msg_serializer.save()
+         return JsonResponse("Updated Successfully", safe=False)
+       return JsonResponse("Failed To Update")	
+ elif request.method == 'DELETE':
+		 bi = BineImmobilier.objects.get(id=pk)
+		 bi.delete()
+		 return JsonResponse("todot Was Deleted Successfully", safe=False)       
+
   
 
 

@@ -3,6 +3,7 @@ from .models import User
 from .models import Annonce
 from .models import BienImmobilier
 from .models import Image
+from .models import Message
 # Register your models here.
 models_list1=[User]
 admin.site.register(models_list1)
@@ -14,3 +15,5 @@ admin.site.register(models_list3)
 
 models_list4=[Image]
 admin.site.register(models_list4)
+models_list5=[Message]
+admin.site.register(models_list5)

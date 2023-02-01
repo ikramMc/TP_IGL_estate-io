@@ -11,7 +11,9 @@ urlpatterns = [
     path('User/<int:pk>', views.UserAPI),
     path('Annonce/', views.AnnonceAPI),
     path('Annonce/<int:pk>', views.AnnonceAPI),
-    path('Annonce/<str:dateDebut>/<str:dateFin>/<str:wilaya>/<str:commune>/<str:motsClés>', views.AnnonceAPI),
+    path('Annonce/<str:dateDebut>/<str:dateFin>/<str:wilaya>/<str:commune>/<str:motsClés>', views.filterAPI),
      path('bienImob/', views.BienImmobilierAPI),
+     path('message/', views.MessageAPI),
+     path('message/<int:pk>', views.MessageAPI),
     path('bienImob/<int:pk>', views.BienImmobilierAPI),
     path('Image/', views.PostView.as_view(), name= 'image_list'),]

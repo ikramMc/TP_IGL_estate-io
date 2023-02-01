@@ -15,7 +15,7 @@ class AddPage extends Component{
           this.state={
                location:DefaultLocation,
                Zoom:DefaultZoom,
-               titre:null,adresse:null,commune:null,wilaya:'Adrar',images:[],bienimob:{id:'',titre:'',description:'',surface:'',prix:''}
+               titre:null,adresse:null,commune:null,wilaya:'Adrar',images:[],bienimob:{id:'',titre:'',description:'',surface:'',prix:'',type:''}
           }
           this.handleChangeLocation=this.handleChangeLocation.bind(this);
           this.handleChangeZoom=this.handleChangeZoom.bind(this);
@@ -56,6 +56,7 @@ class AddPage extends Component{
                   adresse:this.state.adresse,
                   latitude:this.state.location.lat,
                   longitude:this.state.location.lng,
+                  type:this.state.type,
               })
           }).then(response=>response.json())
           .then((result)=>{
@@ -74,9 +75,9 @@ class AddPage extends Component{
           
         }
         createAnnonce(id)
-        { let date=new Date();
+        { 
+          let date=new Date();
           let dateexct=date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
-          console.log(dateexct);
           fetch('http://127.0.0.1:8000/Annonce/',{
             method:'POST',
             headers:{
@@ -86,8 +87,9 @@ class AddPage extends Component{
             body:JSON.stringify({
                 annonceId:null,
                 date:dateexct,
-                userId:1,
+                userId:JSON.parse(window.localStorage.getItem('user')).id,
                 bienId:id,
+                categorie:this.state.categorie,
             })
         }).then(response=>response.json())
         .then((result)=>{
@@ -139,7 +141,7 @@ class AddPage extends Component{
       <form className="form">      
           
        <div className="partOne">
-       <div className="tiitre">Informations sur l'annonce</div>
+       <div className="titre">Informations sur l'annonce</div>
        <div className="fields">
           <div className="input-field">
                <label>Titre</label>
@@ -149,7 +151,7 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Categorie</label>
-               <select  className="categorie">
+               <select  className="categorie" onChange={event=>this.setState({categorie:event.target.value})}>
                  {categories.map((categorie)=>{return <option value={categorie}> {categorie}</option>
                   })}
                </select>
@@ -158,7 +160,7 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Type</label>
-               <select className="type">
+               <select className="type" onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,type:event.target.value}}))}>
                {types.map((type)=>{return <option value={type}> {type}</option>
                  })}
                </select>

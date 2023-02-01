@@ -1,24 +1,28 @@
 import { Component } from "react";
 import React from "react";
+import AnnoncesSlider from "./AnnoncesSlider";
 
 // eslint-disable-next-line no-undef
-class searchPage extends Component{
+class SearchPage extends Component{
   constructor()
   {
     super()
-    this.state={dateDebut:"2022-12-05",dateFin:"2022-12-05",wilaya:"Adrar"}
+    this.state={dateDebut:"2022-12-05",dateFin:"2022-12-05",wilaya:"Adrar",result:[]}
     this.get=this.get.bind(this)
   }
   get()
   {  fetch('http://127.0.0.1:8000/Annonce/'+this.state.dateDebut+'/'+this.state.dateFin+'/'+this.state.wilaya+'/'+this.state.commune+'/'+this.state.motsClés).then(response=>response.json()).then((result)=>{
-    console.log(result)
+    this.setState({result:result})
 
       },)
    
 
 }
   render()
-  { const {wilayas_communes}= require('dz-communes');
+  {
+    let slider;
+    if(this.state.result.length!==0)slider=<AnnoncesSlider annonces={this.state.result[0]} bienImob={this.state.result[1]}/>
+    const {wilayas_communes}= require('dz-communes');
   let wilayas=wilayas_communes.map(wilaya=>wilaya.name);
   let communes=wilayas_communes[wilayas.indexOf(this.state.wilaya)]["communes"];
 
@@ -35,7 +39,8 @@ class searchPage extends Component{
   })}
   </select>
       <button onClick={this.get}>click</button>
+      <div>{slider}</div>
     </div>
   }
 }
-export default searchPage;
+export default SearchPage;

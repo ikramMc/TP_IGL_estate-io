@@ -1,0 +1,5 @@
+import { AuthManager } from "./Controllers/authManager";
+
+export const authManger=new AuthManager();
+export let salut='salut';
+export default salut ;

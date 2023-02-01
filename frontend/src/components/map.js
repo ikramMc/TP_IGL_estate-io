@@ -13,7 +13,9 @@ const App = () => {
   const [zoom, setZoom] = useState(DefaultZoom);
 
   function handleChangeLocation (lat, lng){
-    setLocation({lat:lat, lng:lng});
+    setLocation(
+      
+    );
   }
   
   function handleChangeZoom (newZoom){

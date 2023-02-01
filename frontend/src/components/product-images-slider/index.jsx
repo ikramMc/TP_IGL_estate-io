@@ -7,7 +7,7 @@ import { useState } from 'react'
 const ProductImagesSlider = props => {
     const [activeThumb, setActiveThumb] = useState()
 
-    return <>
+   return <>
         <Swiper
             loop={true}
             spaceBetween={10}
@@ -20,7 +20,7 @@ const ProductImagesSlider = props => {
             {
                 props.images.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <img src={item} alt="product images" />
+                        <img src={" http://127.0.0.1:8000/"+item} alt="product images" />
                     </SwiperSlide>
                 ))
             }
@@ -29,7 +29,7 @@ const ProductImagesSlider = props => {
             onSwiper={setActiveThumb}
             loop={true}
             spaceBetween={10}
-            slidesPerView={4}
+            slidesPerView={props.images.length}
             modules={[Navigation, Thumbs]}
             className='product-images-slider-thumbs'
         >
@@ -37,7 +37,7 @@ const ProductImagesSlider = props => {
                 props.images.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="product-images-slider-thumbs-wrapper">
-                            <img src={item} alt="product images" />
+                            <img src={" http://127.0.0.1:8000/"+item} alt="product images" />
                         </div>
                     </SwiperSlide>
                 ))

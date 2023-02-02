@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.apropostxt{
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.notreapp {
+    text-align: center;
+}
+
+.apropos {
+    
+    display: flex;
+    justify-content: center;
+    font-weight: 100;
+    font-size: smaller;
+    text-decoration: none;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    border-radius: 30px;
+}
+
+.apropos .image {
+    width: 130px;
+
+}
+
+.apropos .cardtwo{
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 40px 30px;
+}
+
+
+
+
+
+

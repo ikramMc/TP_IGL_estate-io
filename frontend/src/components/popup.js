@@ -1,6 +1,6 @@
 import React from 'react'
 import image from './images/habobi.jpg'
-import './popup.css'
+import './style/popup.css'
 
 const popup = ({open, onClose}) => {
   if (!open) return null

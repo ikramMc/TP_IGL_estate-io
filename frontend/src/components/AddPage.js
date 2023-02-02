@@ -1,10 +1,12 @@
 import { Component } from "react";
 import React from "react";
-import axios from "axios";
 import Footer from './footer';
 import Nav from './nav';
-import "./AddPage.css"
-import MapPicker from 'react-google-map-picker'
+import "./style/AddPage.css"
+import { Annonce } from "../entities/Annonce";
+import MapPicker from 'react-google-map-picker';
+import { Bien } from "../entities/Bien";
+import { RequeteController } from "../Controllers/requeteController";
 const DefaultLocation = { lat: 36.7, lng: 2.985};
 const DefaultZoom = 10;
 
@@ -15,13 +17,12 @@ class AddPage extends Component{
           this.state={
                location:DefaultLocation,
                Zoom:DefaultZoom,
-               titre:null,adresse:null,commune:null,wilaya:'Adrar',images:[],bienimob:{id:'',titre:'',description:'',surface:'',prix:'',type:''}
+               adresse:null,commune:null,wilaya:'Adrar',titre:'',images:[],bienimob:{id:'',description:'',surface:'',prix:'',type:''}
           }
           this.handleChangeLocation=this.handleChangeLocation.bind(this);
           this.handleChangeZoom=this.handleChangeZoom.bind(this);
           this.render=this.render.bind(this)
           this.submitHandler=this.submitHandler.bind(this);
-          this.createImage=this.createImage.bind(this);
           this.imageHandler=this.imageHandler.bind(this);
      }
      handleChangeLocation (newLat, newLng){
@@ -38,89 +39,16 @@ class AddPage extends Component{
         }*/
         submitHandler(event)
         {  event.preventDefault();
-          let id;
-          fetch('http://127.0.0.1:8000/bienImob/',{
-              method:'POST',
-              headers:{
-                  'Accept':'application/json',
-                  'Content-Type':'application/json',
-              },
-              body:JSON.stringify({
-                  bienImmobilierId:null,
-                  titre:this.state.titre,
-                  description:this.state.bienimob.description,
-                  surface:this.state.bienimob.surface,
-                  prix:this.state.bienimob.prix,
-                  wilaya:this.state.wilaya,
-                  commune:this.state.commune,
-                  adresse:this.state.adresse,
-                  latitude:this.state.location.lat,
-                  longitude:this.state.location.lng,
-                  type:this.state.type,
-              })
-          }).then(response=>response.json())
-          .then((result)=>{
-            id=result[1];
-            this.createImage(id);
-            this.createAnnonce(id)
-              alert(result[0]);
-             window.location.reload();
-          },
-          (error)=>{
-              alert("Failed");
-              window.location.reload();
-          });
-         
-      
-          
-        }
-        createAnnonce(id)
-        { 
           let date=new Date();
           let dateexct=date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
-          fetch('http://127.0.0.1:8000/Annonce/',{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json',
-            },
-            body:JSON.stringify({
-                annonceId:null,
-                date:dateexct,
-                userId:JSON.parse(window.localStorage.getItem('user')).id,
-                bienId:id,
-                categorie:this.state.categorie,
-            })
-        }).then(response=>response.json())
-        .then((result)=>{
-            alert(result);
-        },
-        (error)=>{
-            alert("Failed to add announce -_-");
-            
-        });
+          console.log(dateexct);
+          let annonce=new Annonce(null,dateexct,JSON.parse(window.localStorage.getItem('user')).id,null,this.state.categorie)
+          let bien=new Bien(null,this.state.titre,this.state.bienimob.description,this.state.bienimob.prix,this.state.bienimob.surface,this.state.location,this.state.wilaya,this.state.commune,this.state.adresse,this.state.bienimob.type);
+          let rqt=new RequeteController();
+          rqt.addNewAnnonce(annonce,bien,this.state.images);
         }
-        createImage(id)
-        {
-          let formData=new FormData();
-          let images=this.state.images;
-          for (var i=0;i<images.length;i++)
-          { formData.append('image', images[i],images[i].name);
-            formData.append('id', null);
-            formData.append('bienid',id);
-                let url = 'http://localhost:8000/Image/';
-                axios.post(url, formData, {
-                  headers: {
-                    'content-type': 'multipart/form-data'
-                  }
-                }).then(res => {
-                      console.log(res.data);
-                    })
-                    .catch(err => console.log(err))
-                   
-                  }   
-      
-        }
+        
+        
         imageHandler(event)
         {
          this.setState({images:event.target.files});
@@ -130,8 +58,8 @@ class AddPage extends Component{
   { const {wilayas_communes}= require('dz-communes');
   let wilayas=wilayas_communes.map(wilaya=>wilaya.name);
   let communes=wilayas_communes[wilayas.indexOf(this.state.wilaya)]["communes"];
-  let categories=["vente","echnage","location","location pour vacances"];
-   let types=["terrain","terrain agricole","appartement","vila","maison"];
+  let categories=["vente","echange","location","location pour vacance"];
+   let types=["terrain","terrain agricole","appartement","bungalow","maison"];
   return  <div className="addpage">
   <Nav />
   <div  className="body">

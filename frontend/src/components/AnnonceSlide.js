@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 //import Popup from './popup';
-import './popup.css'
-import './AnnoncesSlider.css'
+import './style/popup.css'
+import './style/AnnoncesSlider.css'
 import { Link } from 'react-router-dom';
 
 export class AnnonceSlide extends Component{
@@ -16,9 +16,9 @@ export class AnnonceSlide extends Component{
     return (
         <div className="card">
         <img  className="product--image"  alt="product image" />
-        <h2>{"categorie"}</h2>
-        <p className="price">{this.state.bien?.prix}</p>
-        <p>{this.state.bien.description}</p>
+        <h2>{this.state.annonce.Categorie}</h2>
+        <p className="price">{this.state.bien.prix}</p>
+        <p>{this.state.bien.titre}</p>
         <div className="btndetails">
             <Link className='btndetailsContent' to={`/slider/${this.state.annonce.annonceId}`} >Afficher les details</Link>
          </div>

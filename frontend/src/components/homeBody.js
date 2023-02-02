@@ -1,7 +1,8 @@
-import './nav.css';
+import './style/nav.css';
 import { Component } from 'react';
-import './homeBody.css'
+import './style/homeBody.css'
 import AnnoncesSlider from './AnnoncesSlider';
+import { RequeteController } from '../Controllers/requeteController';
 
 class HomeBody extends Component{
   constructor()
@@ -34,28 +35,16 @@ class HomeBody extends Component{
       window.location='/ajouterAnnonce';
     }
     refreshList(){
-      fetch('http://127.0.0.1:8000/bienImob/')
-      .then(response => response.json())
-      .then(biens => {
-          this.setState({
-             bienImob:biens
-          }); 
-      })
-       fetch('http://127.0.0.1:8000/Annonce/')
-       .then(response => response.json())
-       .then(annonces => {
-           this.setState({
-              annonces:annonces
-           })
-       })
-      
-       
-     };
+      let rqtctrl=new RequeteController();
+     rqtctrl.getAllAnnonces();
+     this.setState({bienImob:JSON.parse(window.localStorage.getItem('biens')),annonces:JSON.parse(window.localStorage.getItem('annonces')),}) 
+    
+    };
   
   render()
   {
      let slider;
-    if(this.state.annonces.length!==0 && this.state.bienImob.length!==0) slider= <AnnoncesSlider annonces={this.state.annonces} bienImob={this.state.bienImob}  />
+    this.state.annonces.length!==0 && this.state.bienImob.length!==0? slider= <AnnoncesSlider annonces={this.state.annonces} bienImob={this.state.bienImob}  />:slider=<div>pas d'annonces encore</div>
     return <div class='home-body'>
         <div class='home-body-element'><h2 class='welcome-text'>Bienvenue dans Estate.io !</h2></div>
         <div class='home-body-element'><h1 class='slogan-text'>SOME SLOGAN HERE CUZ I THINK IT WOULDD LOOK COOL</h1></div>

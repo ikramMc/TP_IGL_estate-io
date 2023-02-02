@@ -1,8 +1,6 @@
 import react from 'react';
 import {Component} from 'react';
-
-
-import './nav.css';
+import './style/nav.css';
 
 class Nav extends Component{
     

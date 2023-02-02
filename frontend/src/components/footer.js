@@ -4,7 +4,7 @@ import fb from './images/facebook.png'
 import ig from './images/instagram.png'
 import tw from './images/twitter.png'
 import li from './images/linkedin.png'
-import "./footer.css";
+import "./style/footer.css";
 
 export class footer extends Component{
   render () {

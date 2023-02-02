@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import AnnonceSlide from './AnnonceSlide';
-import "./AnnoncesSlider.css";
+import "./style/AnnoncesSlider.css";
 import { responsive } from "./data";
 //import Popup from './popup';
-import './popup.css'
+import './style/popup.css'
 
 
 export class AnnoncesSlider extends Component {
@@ -22,7 +22,7 @@ export class AnnoncesSlider extends Component {
   render(){
    
     const annonces=this.state.annonces.map((item) => {
-      let bien=this.state.bienImob.find(bien=>bien.bienImmobilierId===item.bienId);
+      let bien=this.state.bienImob.find(bien=>bien.bienImmobilierId===item.bien);
      return  <AnnonceSlide bien={bien}
      annonce={item}  
      />}

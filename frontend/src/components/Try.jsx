@@ -1,4 +1,4 @@
-import './try.scss';
+import './style/try.scss';
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
@@ -8,7 +8,7 @@ import pr from './images/person.png'
 import ph from './images/phone.png'
 import ma from './images/email.png'
 import axios from "axios";
-import "./footertry.css";
+import "./style/footertry.css";
 
 import ProductImagesSlider from './product-images-slider';
 //import { productImages } from './assets'
@@ -20,72 +20,60 @@ import GoogleMapReact from 'google-map-react';
 //import axios from 'axios'
 
 class Try extends Component {
-  constructor()
+  constructor(props)
   {
     super();
-    this.state={userId:JSON.parse(window.localStorage.getItem('user')).id,annonce:{},bien:{},Zoom:10,owner:{},images:[],isLoading:true,message:''};
+    this.state={userId:JSON.parse(window.localStorage.getItem('user')).id,annonce:JSON.parse(window.localStorage.getItem('annonces')).find((annonce)=>annonce.annonceId==props.params.annonceId),bien:{},Zoom:10,owner:{},images:[],isLoading:true,message:''};
    // this.onChangeZoom=this.onChangeZoom.bind(this);
    this.refreshList=this.refreshList.bind(this);
     this.createmessage=this.createmessage.bind(this);
+    this.retriveOwnerandImages=this.retriveOwnerandImages.bind(this);
   
   }
-  refreshList(){
-    fetch('http://127.0.0.1:8000/Annonce/')
-     .then(response => response.json())
-     .then(annonces => {
-      
-         this.setState({
-            annonce:annonces.find((annonce)=>annonce.annonceId==this.props.params.annonceId)
-         })
-         
-         fetch('http://127.0.0.1:8000/bienImob/')
+  retriveOwnerandImages()
+  {
+    fetch('http://127.0.0.1:8000/User/')
     .then(response => response.json())
-    .then(biens => {
+    .then(users => {
         this.setState({
-           bien:biens.find((bien)=>bien.bienImmobilierId==this.state.annonce.bienId)
-        }); 
-        console.log(this.state.bien)
-        fetch('http://127.0.0.1:8000/User/')
-        .then(response => response.json())
-        .then(users => {
-            this.setState({
-               owner:users.find((user)=>user.userId==this.state.annonce.userId)
-              
-            })
+           owner:users.find((user)=>user.userId==this.state.annonce.user)
           
-            let formData=new FormData();
-    axios.get('http://localhost:8000/Image/', formData, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    }).then(res => {
-
-      let images=[];
+        })
       
-      for(let i=0;i<res.data.length;i++)
-      {
-        if(res.data[i].bienid==this.state.annonce.bienId)images.push(res.data[i].image)
+        let formData=new FormData();
+axios.get('http://localhost:8000/Image/', formData, {
+  headers: {
+    'content-type': 'multipart/form-data'
+  }
+}).then(res => {
 
-      }
-       
-      this.setState({images:images,isLoading:false});
-     
-          
-        })
-        .catch(err => console.log(err))
-         
-        })
-    })
-   
-    
-       
-     })
-    
+  let images=[];
   
-   };
+  for(let i=0;i<res.data.length;i++)
+  {
+    if(res.data[i].bien==this.state.annonce.bien)images.push(res.data[i].image)
+
+  }
+  this.setState({images:images,isLoading:false});
+ 
+      
+    })
+    .catch(err => console.log(err))
+     
+    })
+
+    
+  }
+  refreshList(callback){
+   
+       this.setState({
+          bien:JSON.parse(window.localStorage.getItem('biens')).find((bien)=>bien.bienImmobilierId==this.state.annonce.bien)
+       })
+       callback();//synchronisation
+      };
 
    componentDidMount(){
-       this.refreshList();
+       this.refreshList(this.retriveOwnerandImages);
        
    }
    handleChangeZoom (newZoom){
@@ -128,9 +116,9 @@ render()
           {this.state.images.length!==0? <ProductImagesSlider images={this.state.images} />:<div></div>}
         </div>
         <div className="contentdetails">
-            <h1 className='bigtitle'>{this.state.bien?.titre}</h1>
-            <h1 className='bigtitle1'>{this.state.annonce?.date}</h1>
-            <p className='simpletext'>Location pour vacances.</p>
+            <h1 className='bigtitle'>{this.state.bien.titre}</h1>
+            <h1 className='bigtitle1'>{this.state.annonce.date}</h1>
+            <p className='simpletext'>{this.state.annonce.Categorie}</p>
             <div className="trait_dessus"> </div>
             <p className='t1'>Surface</p>
             <p className='simpletext1' >{this.state.bien.surface}</p>

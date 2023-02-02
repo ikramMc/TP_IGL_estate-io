@@ -1,6 +1,6 @@
 
 import { Component } from 'react';
-import './profileBody.css'
+import './style/profileBody.css'
 import pfp from './images/blue.jpg'
 import AnnoncesSlider from './AnnoncesSlider';
 

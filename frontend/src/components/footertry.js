@@ -4,7 +4,7 @@ import lc from './images/location.png'
 import pr from './images/person.png'
 import ph from './images/phone.png'
 import ma from './images/email.png'
-import "./footertry.css";
+import "./style/footertry.css";
 export class footertry extends Component {
   render() {
   return (

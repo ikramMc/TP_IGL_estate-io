@@ -1,16 +1,16 @@
 import React, {  Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import "./Login.css";
+import "./style/Login.css";
 import NavBarLogin from './NavBarLogin';
 import Footer from './footer';
 import Apropos from './Apropos';
 //import HomePage from './homePage'
 //import { useNavigate } from 'react-router-dom';
-import { User } from './entities/User';
+import { User } from '../entities/User';
 import { AuthManager } from '../Controllers/authManager';
 const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
-class App extends Component {
+class AuthPage extends Component {
   constructor(){
     super();
     const initClient = () => {
@@ -20,17 +20,15 @@ class App extends Component {
       });};
       gapi.load('client:auth2', initClient); }
 
-     onSuccess(userInfo)  {
+  onSuccess(userInfo)  {
+    console.log("hey")
         const authManager=new AuthManager()
         let user=new User(null,userInfo['wt']['cu'],userInfo['wt']['uT'],userInfo['wt']['rV']);
      authManager.login(user);
-     console.log(user);
-  
     }
 
-   onFailure(err){
+  onFailure(err){
         console.log('failed', err);
-        //give the user a message
     }
 
     
@@ -60,4 +58,4 @@ class App extends Component {
         </div>
     }
 }
-export default App;
+export default AuthPage;

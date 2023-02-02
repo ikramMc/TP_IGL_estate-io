@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Apropos.css";
+import "./style/Apropos.css";
 import { Component } from 'react';
 import img1 from "./images/message.png"
 import img2 from "./images/publier.png"

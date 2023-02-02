@@ -84,22 +84,20 @@ def UserAPI(request ,pk=0):
 
 
 @csrf_exempt
-def filterAPI(request,dateDebut,dateFin,wilaya,commune,motsClés,pk=0):
+def filterAPI(request,motsClés="",pk=0):
  if request.method=='GET':
-       annonces = Annonce.objects.select_related("bienId").filter(date__lte=dateFin,date__gte=dateDebut)
-       annoncesModif=Annonce.objects.none()
+       annonces = Annonce.objects.none()
        biens=BienImmobilier.objects.none()
        keyWords=motsClés.split(' ')
-       print(keyWords)
        qr=reduce(operator.or_,(Q(description__icontains=key)|Q(titre__icontains=key)for key in keyWords))
-       for annonce in annonces :
-        set=BienImmobilier.objects.filter(qr,bienImmobilierId=annonce.bienId.bienImmobilierId,wilaya=wilaya,commune=commune)
-        if set: 
-          biens =biens.union(set)
-          annoncesModif=annoncesModif.union(Annonce.objects.filter(annonceId=annonce.annonceId))
+       set=BienImmobilier.objects.filter(qr)
+       biens =biens.union(set)
+       if set:
+        for bien in set : 
+          annonces=annonces.union(Annonce.objects.filter(bien=bien.bienImmobilierId))
        biens_serialize=BienImmobilierSerializer(biens,many=True)
-       annonces_serializer = AnnonceSerializer(annoncesModif, many=True)
-       if biens_serialize.data!=[]:
+       annonces_serializer = AnnonceSerializer(annonces, many=True)
+       if biens_serialize.data!=[]:    
         return JsonResponse([annonces_serializer.data, biens_serialize.data], safe=False) 
        return JsonResponse("pas d'annonces", safe=False)
  
@@ -143,6 +141,7 @@ def BienImmobilierAPI(request ,pk=0):
        return JsonResponse(bi_serializer.data, safe=False)
  elif request.method == 'POST':
        bi_data = JSONParser().parse(request)
+       print(bi_data)
        bi_serializer= BienImmobilierSerializer(data=bi_data)
        if bi_serializer.is_valid():
          b=bi_serializer.save()

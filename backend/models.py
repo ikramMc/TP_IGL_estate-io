@@ -11,14 +11,14 @@ class User(models.Model):
 
 class Message(models.Model):
   msgId=models.AutoField(primary_key=True)
-  emiteurId=models.IntegerField(default=0)
-  recepteurId=models.IntegerField(default=0)
+  emiteur=models.ForeignKey(User,on_delete=models.CASCADE,default=None,related_name='%(class)s_requests_create')
+  recepteur=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
   contenu=models.CharField(max_length=150,default='msg')
 
 class BienImmobilier(models.Model):
   class Type(models.TextChoices):
    TERRAIN='terrain'
-   TERRAINAGRICOLE='terrainagricole'
+   TERRAINAGRICOLE='terrain agricole'
    APPARTEMENT='appartement'
    MAISON='maison'
    BUNGALOW='bungalow'
@@ -41,8 +41,8 @@ class Annonce(models.Model):
     LOCATIONPOURVACANCE='location pour vacance' 
   annonceId=models.AutoField(primary_key=True)
   date=models.DateField()
-  userId=models.IntegerField()
-  bienId=models.ForeignKey(BienImmobilier,on_delete=models.CASCADE,default=None)
+  user=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
+  bien=models.ForeignKey(BienImmobilier,on_delete=models.CASCADE,default=None)
   Categorie=models.CharField(max_length=25,choices=Categorie.choices,
   default=Categorie.VENTE,)
 
@@ -52,7 +52,7 @@ def upload_to(instance,filename):
 class Image(models.Model):
   id=models.AutoField(primary_key=True)
   image=models.ImageField(upload_to='images/',default=None) 
-  bienid=models.IntegerField()
+  bien=models.ForeignKey(BienImmobilier,on_delete=models.CASCADE,default=None)
  
   
 

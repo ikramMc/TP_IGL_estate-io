@@ -167,7 +167,7 @@ def BienImmobilierAPI(request ,pk=0):
 def MessageAPI(request ,pk=0):
  if request.method=='GET':
        messages = Message.objects.all()
-       messages_serializer = MessageSerializer(bis, many=True)
+       messages_serializer = MessageSerializer(messages, many=True)
        return JsonResponse(messages_serializer.data, safe=False)
  elif request.method == 'POST':
        messages_data = JSONParser().parse(request)

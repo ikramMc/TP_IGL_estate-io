@@ -24,11 +24,13 @@ class Try extends Component {
   {
     super();
     this.state={userId:JSON.parse(window.localStorage.getItem('user')).id,annonce:JSON.parse(window.localStorage.getItem('annonces')).find((annonce)=>annonce.annonceId==props.params.annonceId),bien:{},Zoom:10,owner:{},images:[],isLoading:true,message:''};
-   // this.onChangeZoom=this.onChangeZoom.bind(this);
    this.refreshList=this.refreshList.bind(this);
     this.createmessage=this.createmessage.bind(this);
     this.retriveOwnerandImages=this.retriveOwnerandImages.bind(this);
   
+  }
+  onChangeZoom (newZoom){
+    this.setState({Zoom:newZoom});
   }
   retriveOwnerandImages()
   {
@@ -76,9 +78,7 @@ axios.get('http://localhost:8000/Image/', formData, {
        this.refreshList(this.retriveOwnerandImages);
        
    }
-   handleChangeZoom (newZoom){
-    this.setState({Zoom:newZoom});
-  }
+
   sendMessage(event){
     //create anew row in message
   }
@@ -93,8 +93,8 @@ axios.get('http://localhost:8000/Image/', formData, {
       },
       body:JSON.stringify({
          msgId:null,
-         emiteurId:this.state.owner.userId,
-         recepteurId:this.state.userId,
+         emiteur:this.state.userId,
+         recepteur:this.state.owner.userId,
          contenu:this.state.message,
       })
   }).then(response=>response.json())
@@ -128,18 +128,15 @@ render()
             <p className='simpletext1'>Wilaya : {this.state.bien.wilaya}</p>
             <p className='simpletext1'>Commune : {this.state.bien.commune}</p>
             <p className='simpletext1'>Adresse : {this.state.bien.adresse}</p>
-            <div style={{ height: '50vh', width: '70%' }}>
+            <div style={{ height: '60vh', width: '80%' }}>
       <GoogleMapReact
+        onChangeZoom
         bootstrapURLKeys={{ key: "AIzaSyD55lI3l65Vy6vvRL-sylk3hjJWy83iO3s" }}
         defaultCenter={{ lat:this.state.bien?.latitude, lng: this.state.bien?.longitude}}
         yesIWantToUseGoogleMapApiInternals="true"
         defaultZoom={15}
       >
-         <div
-       lat={this.state.bien?.latitude}
-        lng={this.state.bien?.longitude}
-        text="My Marker"
-       ></div>
+         <div className='picker' lat={this.state.bien?.latitude}lng={this.state.bien?.longitude}></div>
       </GoogleMapReact>
     </div>
       </div>

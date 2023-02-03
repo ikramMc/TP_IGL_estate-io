@@ -1,8 +1,8 @@
 import react from 'react';
 import {Component} from 'react';
-import logo from './images/SVG/estate_logo.svg';
+import logo from './images/facebook.png';
 
-import './nav.css';
+import './style/nav.css';
 
 class NavP extends Component{
     

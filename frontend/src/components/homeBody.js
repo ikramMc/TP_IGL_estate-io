@@ -40,9 +40,13 @@ class HomeBody extends Component{
      this.setState({bienImob:JSON.parse(window.localStorage.getItem('biens')),annonces:JSON.parse(window.localStorage.getItem('annonces')),}) 
     
     };
-  
+   profileBtnHandler()
+   {
+    window.location='/Profile'
+   }
   render()
-  {
+  { console.log(this.state.annonces);
+    console.log(this.state.bienImob.length);
      let slider;
     this.state.annonces.length!==0 && this.state.bienImob.length!==0? slider= <AnnoncesSlider annonces={this.state.annonces} bienImob={this.state.bienImob}  />:slider=<div>pas d'annonces encore</div>
     return <div class='home-body'>
@@ -51,6 +55,7 @@ class HomeBody extends Component{
         <div class='home-body-element btn-div'>
           <button class='search-btn' onClick={this.searchBtnHandler}><h3>Rechercher des annonces !</h3></button>
           <button class='add-btn' onClick={this.addBtnHandler}><h3>Ajouter une annonce</h3></button>
+          <button onClick={this.profileBtnHandler}>profile</button>
         </div>
        <div>{slider}</div>
         

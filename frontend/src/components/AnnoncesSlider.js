@@ -32,7 +32,6 @@ export class AnnoncesSlider extends Component {
     
     <div>
     <div className="contentSlider">
-      <h1 className='h11'>Annonces récentes</h1>
       <div className="slider">
       <Carousel responsive={responsive}>
       {annonces}

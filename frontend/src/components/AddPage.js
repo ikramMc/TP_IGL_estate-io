@@ -32,16 +32,12 @@ class AddPage extends Component{
         handleChangeZoom (newZoom){
           this.setState({Zoom:newZoom});
         }
-      
-       /* handleResetLocation(){
-          setDefaultLocation({ ...DefaultLocation});
-          setZoom(DefaultZoom);
-        }*/
         submitHandler(event)
-        {  event.preventDefault();
+        { event.preventDefault();
+          console.log("hey")
           let date=new Date();
-          let dateexct=date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
-          console.log(dateexct);
+          let month=date.getMonth()+1
+          let dateexct=date.getFullYear()+'-'+month+'-'+date.getDate();
           let annonce=new Annonce(null,dateexct,JSON.parse(window.localStorage.getItem('user')).id,null,this.state.categorie)
           let bien=new Bien(null,this.state.titre,this.state.bienimob.description,this.state.bienimob.prix,this.state.bienimob.surface,this.state.location,this.state.wilaya,this.state.commune,this.state.adresse,this.state.bienimob.type);
           let rqt=new RequeteController();
@@ -66,20 +62,21 @@ class AddPage extends Component{
 
       <div className="container">
       <div className="title">Ajouter une annonce</div>
-      <form className="form">      
+      <form className="form" onSubmit={this.submitHandler}>      
           
        <div className="partOne">
        <div className="titre">Informations sur l'annonce</div>
        <div className="fields">
           <div className="input-field">
                <label>Titre</label>
-               <input type='text' placeholder="   titre" onChange={event=>this.setState({titre:event.target.value})} />
+               <input type='text' placeholder="   titre" onChange={event=>this.setState({titre:event.target.value})} required/>
           </div>
           
 
           <div className="input-field">
                <label>Categorie</label>
-               <select  className="categorie" onChange={event=>this.setState({categorie:event.target.value})}>
+               <select  className="categorie" onChange={event=>this.setState({categorie:event.target.value})} required >
+                    <option value="" selected disabled>Categorie</option>
                  {categories.map((categorie)=>{return <option value={categorie}> {categorie}</option>
                   })}
                </select>
@@ -88,7 +85,8 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Type</label>
-               <select className="type" onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,type:event.target.value}}))}>
+               <select className="type" onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,type:event.target.value}}))}required>
+               <option value="" selected disabled>type</option>
                {types.map((type)=>{return <option value={type}> {type}</option>
                  })}
                </select>
@@ -97,7 +95,8 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Wilaya</label>
-               <select className="wilaya"  onChange={event=>this.setState({wilaya:event.target.value})}>
+               <select className="wilaya"  onChange={event=>this.setState({wilaya:event.target.value})} required>
+               <option value="" selected disabled>wilaya</option>
                {wilayas.map((wilaya)=>{return <option value={wilaya}> {wilaya}</option>
                 })}
                </select>
@@ -106,7 +105,8 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Commune</label>
-               <select className="commune" onChange={event=>this.setState({commune:event.target.value})}>
+               <select className="commune" onChange={event=>this.setState({commune:event.target.value})}required>
+               <option value="" selected disabled>commune</option>
                {communes.map((commune)=>{return <option value={commune["name"]}> {commune["name"]}</option>
                 })}
                </select>
@@ -115,7 +115,7 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Adresse</label>
-               <input type='text' placeholder="    adresse" onChange={event=>this.setState({adresse:event.target.value})}/>
+               <input type='text' placeholder="    adresse" onChange={event=>this.setState({adresse:event.target.value})} required/>
           </div>
 
           <MapPicker defaultLocation={this.state.location}
@@ -134,62 +134,25 @@ class AddPage extends Component{
 
           <div className="input-field">
                <label>Surface</label>
-               <input type='number' placeholder="     surface en metre carée" onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,surface:event.target.value}}))}/>
+               <input type='number' placeholder="     surface en metre carée" onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,surface:event.target.value}}))} required/>
           </div>
 
 
           <div className="input-field">
                <label>Description</label>
-               <input type='text' placeholder="     description"onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,description:event.target.value}}))}/>
+               <input type='text' placeholder="     description"onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,description:event.target.value}}))} required/>
           </div>
 
 
 
           <div className="input-field">
                <label>Prix</label>
-               <input type='number' placeholder="    prix"onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,prix:event.target.value}}))} />
+               <input type='number' placeholder="    prix"onChange={event=>this.setState(prevState=>({bienimob:{...prevState.bienimob,prix:event.target.value}}))}required />
           </div>
 
        </div>
        </div> 
-          
-       <div className="partTwo">
-       <div className="tiitre">Vos informations</div>
-       <div className="fields">
-
-          <div className="input-field">
-               <label>Nom</label>
-               <input type='text' placeholder="    nom"/>
-          </div>
-
-
-          <div className="input-field">
-               <label>Prenom</label>
-               <input type='text' placeholder="     prenom"/>
-          </div>
-
-
-          <div className="input-field">
-               <label>Numero de telephone</label>
-               <input type='phoneNumber' placeholder="     numero de telephone"/>
-          </div>
-
-
-          <div className="input-field">
-               <label>Adresse</label>
-               <input type='text' placeholder="     adresse"/>
-          </div>
-
-          <div className="input-field">
-               <label>E-mail</label>
-               <input type='email' placeholder="     email"/>
-          </div>
-
-        
-     </div>
-     </div>
-
-          <button className="btnBtn" onClick={this.submitHandler}>Ajouter</button>
+          <button className="btnBtn" >Ajouter</button>
      </form>
      
   </div>

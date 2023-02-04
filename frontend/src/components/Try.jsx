@@ -120,7 +120,7 @@ class Try extends Component {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0,0,0,0.5)"
+        backgroundColor: "rgba(0,0,0,0.5)",
       },
       modal: {
         position: "fixed",
@@ -128,6 +128,7 @@ class Try extends Component {
         left: "50%",
         transform: "translate(-50%, -50%)",
         backgroundColor: "#fff",
+        "border-radius": "10px",
         padding: 20
       },
 

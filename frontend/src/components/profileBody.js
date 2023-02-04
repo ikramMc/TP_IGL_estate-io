@@ -1,10 +1,11 @@
 
 import { Component } from 'react';
 import './style/profileBody.css'
-import pfp from './images/facebook.png'
+import pfp from './images/profilepic.png'
 import AnnoncesSlider from './AnnoncesSlider';
 import {  GoogleLogout } from 'react-google-login';
 import { AuthManager } from '../Controllers/authManager';
+import Heading from './Heading';
 const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
 class ProfileBody extends Component{
     constructor()
@@ -45,7 +46,10 @@ class ProfileBody extends Component{
             </div>
         </div>
         <div class='profile-line'></div>
-        <h1 className='h11'>Mes annonces</h1>
+        <br></br>
+        <br></br>
+        <Heading title='Mes annonces' subtitle='' />
+        <br></br>
         <AnnoncesSlider annonces={this.state.annonces} bienImob={this.state.biens}/>
     </div>
 

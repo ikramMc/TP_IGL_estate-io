@@ -11,27 +11,27 @@ const FeaturedCard = () => {
           <div className='box' >
             <img src={img1} alt='' />
             <h4>Terrain</h4>
-            <label>houses total</label>
+            <label>Terrain total</label>
           </div>
           <div className='box' >
-            <img src={img2} alt='' />
+            <img src={img4} alt='' />
             <h4>Terrain Agricole</h4>
-            <label>houses total</label>
+            <label>Terrain agricole total</label>
           </div>
           <div className='box' >
             <img src={img3} alt='' />
             <h4>Appartement</h4>
-            <label>houses total</label>
+            <label>Appartement total</label>
           </div>
           <div className='box' >
-            <img src={img4} alt='' />
+            <img src={img2} alt='' />
             <h4>Maison</h4>
-            <label>houses total</label>
+            <label>Maison total</label>
           </div>
           <div className='box' >
             <img src={img1} alt='' />
             <h4>Bungalow</h4>
-            <label>houses total</label>
+            <label>Bungalow total</label>
           </div>
       </div>
     </>

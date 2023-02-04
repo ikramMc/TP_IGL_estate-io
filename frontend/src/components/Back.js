@@ -6,8 +6,8 @@ const Back = () => {
     <>
       <div className='back'>
         <div className='con'>
-          <span>Ajouter annonce chabab</span>
-          <h1>Remplire les champs hado</h1>
+          <span>Remplire les champs pour creer une annonce.</span>
+          <h1>Ajouter une annonce</h1>
         </div>
         <img className ='imgback' src={im} alt='' />
       </div>

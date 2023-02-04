@@ -19,19 +19,19 @@ export class Apropos extends Component {
                     <div className="cardtwo">
                         <img className='image' src={img1}></img>
                         <h2>Enovoyer message</h2>
-                        <p>hna description hna description hna description hna description hna description hna description hna description hna description hna description hna description </p>
+                        <p>Notre site Web offre une plate-forme de messagerie pratique qui vous permet de vous connecter directement avec les propriétaires. </p>
                     </div> 
 
                     <div className="cardtwo">
                         <img className='image' src={img2}></img>
                         <h2>Publier annonce</h2>
-                        <p>hna description hna description hna description hna description hna description hna description hna description hna description hna description hna description </p>
+                        <p>Partagez votre maison avec le monde. Notre site Web fournit une plate-forme permettant aux propriétaires de présenter leurs propriétés à un large public.</p>
                     </div> 
 
                     <div className="cardtwo">
                         <img className='image' src={img3}></img>
-                        <h2>Rechercher</h2>
-                        <p>hna description hna description hna description hna description hna description hna description hna description hna description hna description hna description </p>
+                        <h2>Rechercher annonce</h2>
+                        <p>Trouvez votre maison idéale en toute simplicité. Notre fonctionnalité de recherche avancée vous permet de filtrer facilement vos résultats pour trouver la maison idéale pour vous </p>
                     </div> 
 
                       

@@ -3,6 +3,7 @@ import React, { Component} from 'react';
 import './style/popup.css'
 import './style/AnnoncesSlider.css'
 import { Link } from 'react-router-dom';
+import img from './images/house.jpg';
 
 export class AnnonceSlide extends Component{
      constructor(props)
@@ -15,7 +16,7 @@ export class AnnonceSlide extends Component{
      {
     return (
         <div className="card">
-        <img  className="product--image"  alt="product image" />
+        <img  src={img} className="product--image"  alt="product image" />
         <h2>{this.state.annonce.Categorie}</h2>
         <p className="price">{this.state.bien.prix}</p>
         <p>{this.state.bien.titre}</p>

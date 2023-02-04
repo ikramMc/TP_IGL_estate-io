@@ -77,10 +77,7 @@ appliquerFiltre()
           <div className='conn'>
           
             <form className='flex'>
-              <div className='box'>
-                <span>Mots cles</span>
-                <input className= "inputtext" type='text' placeholder='Mot cles' onChange={(event => { this.setState({ motsClés: event.target.value }) })} />
-              </div>
+             
               <div className='box'>
                 <span>Date debut</span>
                 <input type='date'className= "inputtext"   placeholder='Date debut' onChange={(event => { this.setState({ dateDebut: event.target.value }) })} />
@@ -111,7 +108,7 @@ appliquerFiltre()
               <button onClick={this.appliquerFiltre} className='btn1'>
                 <i className='fa fa-search'></i>
               </button>
-              <div>{slider}</div>
+  
             </form>
           </div>
         </section>

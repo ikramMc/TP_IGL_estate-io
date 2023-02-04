@@ -42,7 +42,7 @@ class AuthPage extends Component {
                 </div>
                     <h1>Publiez et consultez des annonces immobilières gratuitement !</h1>
                 <p>
-                    text text texte ettgfhdghgfhdstext text t
+                State.io , expérimentez la joie de devenir propriétaire
                 </p>
                 <GoogleLogin
                     clientId={clientId}

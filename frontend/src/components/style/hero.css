@@ -26,20 +26,46 @@
   color: rgb(0, 0, 0);
   opacity: 0.8;
 }
-form {
+.flex {
   background-color: #fff;
   border-radius: 5px;
-  margin-top: 50px;
+
   padding: 0 20px;
 }
-form .inputtext {
+.flex .inputtext {
   padding: 10px;
-  width: 120px;
+  width: 170px;
   border: 1px solid rgba(128, 128, 128, 0.2);
   margin-top: 5px;
   border-radius: 5px;
 }
-form span {
+.flex .wilaya {
+  padding: 10px;
+  width: 170px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.flex .commune {
+  padding: 10px;
+  width: 190px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.flex .btnm{
+  background-color: #fff;
+  color: black;
+}
+.flex .inputext {
+  padding: 10px;
+  width: 500px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.flex span {
   font-size: 12px;
   color: grey;
 }
@@ -47,28 +73,28 @@ input::placeholder {
   font-size: 12px;
   color: black;
 }
-form .box {
+.flex .box {
   padding: 15px;
   border-left: 1px solid rgba(128, 128, 128, 0.2);
 }
-form .box:nth-child(1) {
+.flex .box:nth-child(1) {
   border-left: none;
 }
-form h4 {
+.flex h4 {
   font-weight: 500;
 }
 @media screen and (max-width: 800px) {
   .hero .container {
     padding-top: 30%;
   }
-  form {
+  .flex {
     display: flex;
     flex-wrap: wrap;
   }
-  form .box {
+  .flex .box {
     border-left: none;
   }
-  form input {
+  .flex input {
     width: 100%;
   }
 }

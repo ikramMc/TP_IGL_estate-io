@@ -64,7 +64,7 @@ class HomeBody extends Component{
         </br>
         <br>
         </br>
-        <Heading title='Annonces récentes' subtitle='Les annonces recentes pargategee eoko.' />
+        <Heading title='Annonces récentes' subtitle='Consulter les annonces partagées récemment.' />
         <br>
         </br>
        <div>{slider}</div>

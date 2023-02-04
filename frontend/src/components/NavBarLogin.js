@@ -14,9 +14,6 @@ export class NavBarLogin extends Component{
                <div className="nav_Menu">
                    <ul className="navlist_Grid">
                       <li className="nav_item">
-                        <a href="/slider" className="nav_link">Annonces</a>
-                      </li>
-                      <li className="nav_item">
                         <a href="" className="nav_linkAdmin">Admin</a>
                       </li>
                    </ul>

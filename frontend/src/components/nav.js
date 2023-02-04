@@ -48,6 +48,7 @@ class Nav extends Component{
             Estate.io
           </div>
           <div className='button flexx'>
+          <i onClick={this.searchBtnHandler} class="fa-solid fa-magnifying-glass"></i>
           <i onClick={this.addBtnHandler}  class="fa-solid fa-circle-plus"></i>
           <i onClick={this.notificationBtnHandler} class="fa-solid fa-comment"></i>
           <i onClick={this.profileBtnHandler}  class="fa-solid fa-circle-user"></i>

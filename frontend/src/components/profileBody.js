@@ -34,15 +34,13 @@ class ProfileBody extends Component{
             <div class='profile-pic profile-content'>
                 <img src={pfp} class='pfp'/>
             </div>
-            <div class='profile-info profile-content'>
+            <div class='profile-info '>
                 <div class='profile-name'>{this.state.user.nom+"  "+this.state.user.prenom}</div>
                 <div class='profile-text'>{this.state.user.email}</div>
                 <div class='profile-text'>{this.state.user.tel}</div>
                 <div class='btns'>
-                    <button onClick={this.checkMsg}>notification</button>
+                    <button class='modify-btn' onClick={this.checkMsg}>Consulter messages</button>
                     <button class='modify-btn'>Modifier mon profile</button>
-                    <button class='deconnect-btn'>Déconnecter</button>
-                    <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={this.logOut} onFailure={console.log("fail")}/>
                 </div>
             </div>
         </div>

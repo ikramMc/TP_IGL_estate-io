@@ -25,24 +25,6 @@ const ProductImagesSlider = props => {
                 ))
             }
         </Swiper>
-        <Swiper
-            onSwiper={setActiveThumb}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={props.images.length}
-            modules={[Navigation, Thumbs]}
-            className='product-images-slider-thumbs'
-        >
-            {
-                props.images.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <div className="product-images-slider-thumbs-wrapper">
-                            <img src={" http://127.0.0.1:8000/"+item} alt="product images" />
-                        </div>
-                    </SwiperSlide>
-                ))
-            }
-        </Swiper>
     </>
 }
 

@@ -8,6 +8,8 @@ import pr from './images/person.png'
 import ph from './images/phone.png'
 import ma from './images/email.png'
 import axios from "axios";
+import Footer from './footer';
+import Nav from './nav';
 import "./style/footertry.css";
 
 import ProductImagesSlider from './product-images-slider';
@@ -110,59 +112,107 @@ axios.get('http://localhost:8000/Image/', formData, {
 render()
 {
   return (this.state.isLoading===false?
-   <div>
-    <div className="yo">
-        <div  className="yoyo">
-          {this.state.images.length!==0? <ProductImagesSlider images={this.state.images} />:<div></div>}
-        </div>
-        <div className="contentdetails">
-            <h1 className='bigtitle'>{this.state.bien.titre}</h1>
-            <h1 className='bigtitle1'>{this.state.annonce.date}</h1>
-            <p className='simpletext'>{this.state.annonce.Categorie}</p>
-            <div className="trait_dessus"> </div>
-            <p className='t1'>Surface</p>
-            <p className='simpletext1' >{this.state.bien.surface}</p>
-            <p className='t1'>Description</p> 
-            <p className='simpletext1' >{this.state.bien.description}</p>
-            <p className='t1'>Localisation</p>
-            <p className='simpletext1'>Wilaya : {this.state.bien.wilaya}</p>
-            <p className='simpletext1'>Commune : {this.state.bien.commune}</p>
-            <p className='simpletext1'>Adresse : {this.state.bien.adresse}</p>
-            <div style={{ height: '60vh', width: '80%' }}>
-      <GoogleMapReact
-        onChangeZoom
-        bootstrapURLKeys={{ key: "AIzaSyD55lI3l65Vy6vvRL-sylk3hjJWy83iO3s" }}
-        defaultCenter={{ lat:this.state.bien?.latitude, lng: this.state.bien?.longitude}}
-        yesIWantToUseGoogleMapApiInternals="true"
-        defaultZoom={15}
-      >
-         <div className='picker' lat={this.state.bien?.latitude}lng={this.state.bien?.longitude}></div>
-      </GoogleMapReact>
-    </div>
-      </div>
-    </div>
-    <div className="footer1">
-        <div className="footer_container1">
-            <h1 className="contactetcoord">
-                Contact & coordonnees
-            </h1>
-           
-            <div>
-              <div className="footer_social1">
-                <img src={pr} alt={"img"} className="icon1"></img> <a className='infoo'>{this.state.owner.nom} {this.state.owner.prenom}</a>
-                <img src={ma} alt={"img"} className="icon1"></img> <a className='infoo'>{this.state.owner.email}</a>
-
-                <img src={lc} alt={"img"} className="icon1"></img> <a className='infoo'>{this.state.owner.adresse}</a>
-                <img src={ph} alt={"img"} className="icon1"></img> <a className='infoo'>{this.state.owner.tel}</a>
-            </div>
-            {this.state.owner.userId===this.state.userId?<div></div>:<div><button className="button-75" role="button" ><span className="text">Envoyer message</span></button>
-            <input type='text' placeholder='write your message'onChange={event=>this.setState({message:event.target.value})}/><button onClick={this.createmessage}>send</button></div>}</div>
-          
-        </div>
-      </div>
-      
-    </div>
-  : <div>loading</div>);
-}
+    <div>
+     <Nav />
+     <div className="yo">
+         <div  className="yoyo">
+           {this.state.images.length!==0? <ProductImagesSlider images={this.state.images} />:<div></div>}
+         </div>
+    
+ 
+       <table  className="invoice-table" >
+           <thead>
+             <tr>
+               <td colSpan="2">
+               <i class="fa-solid fa-file"></i>  Informations sur l'annonce</td>
+             </tr>
+           </thead>
+           <tbody>
+           <tr>
+              <th>Titre</th>
+              <td>{this.state.bien?.titre}</td>
+           </tr>
+           <tr>
+              <th>Date de publication</th>
+              <td>{this.state.annonce?.date}</td>
+           </tr>
+           <tr>
+              <th>Surface</th>
+              <td>{this.state.bien.surface}</td>
+           </tr>
+           <tr>
+              <th>Description</th>
+              <td>{this.state.bien.description}</td>
+           </tr>
+           <tr>
+              <th>Wilaya</th>
+              <td>{this.state.bien.wilaya}</td>
+           </tr>
+           <tr>
+              <th>Commune</th>
+              <td>{this.state.bien.commune}</td>
+           </tr>
+           <tr>
+              <th>Adresse</th>
+              <td> {this.state.bien.adresse}</td>
+           </tr>
+ 
+           <tr>
+             <td colSpan = "2" className='map'>
+           <div style={{ height: '50vh', width: '70%' }}>
+                 <GoogleMapReact
+                   bootstrapURLKeys={{ key: "AIzaSyD55lI3l65Vy6vvRL-sylk3hjJWy83iO3s" }}
+                   defaultCenter={{ lat:this.state.bien?.latitude, lng: this.state.bien?.longitude}}
+                   yesIWantToUseGoogleMapApiInternals="true"
+                   defaultZoom={15}
+                 >
+                   <div
+                 lat={this.state.bien?.latitude}
+                   lng={this.state.bien?.longitude}
+                   text="My Marker"
+                 ></div>
+                 </GoogleMapReact>
+          </div>
+          </td>
+           </tr>
+         
+           </tbody>
+           <thead>
+             <tr>
+               <td colSpan="2">
+               <i class="fa-solid fa-user"></i>  Contact et coordonnees</td>
+             </tr>
+           </thead>
+           <tbody>
+           <tr>
+              <th>Nom</th>
+              <td>{this.state.owner.nom} </td>
+           </tr>
+           <tr>
+              <th>Prenom</th>
+              <td>{this.state.owner.prenom}</td>
+           </tr>
+           <tr>
+              <th>Adresse</th>
+              <td>{this.state.owner.adresse}</td>
+           </tr>
+           <tr>
+              <th>Email</th>
+              <td>{this.state.owner.email}</td>
+           </tr>
+           <tr>
+              <th>Numero de telephone</th>
+              <td>{this.state.owner.tel}</td>
+           </tr>
+           </tbody>
+       </table>
+     </div>
+     {this.state.owner.userId===this.state.userId?<div></div>:<div><button className="button-75" role="button" ><span className="text">Envoyer message</span></button>
+             <input type='text' placeholder='write your message'onChange={event=>this.setState({message:event.target.value})}/><button onClick={this.createmessage}>send</button></div>}
+     <Footer />
+           </div>
+   : <div>loading</div>);
+ }
+ 
 }
 export default withRouter(Try);

@@ -2,6 +2,9 @@ import './style/nav.css';
 import { Component } from 'react';
 import './style/homeBody.css'
 import AnnoncesSlider from './AnnoncesSlider';
+import Featured from './Featured';
+import Hero from './Hero'
+import Heading from './Heading';
 import { RequeteController } from '../Controllers/requeteController';
 
 class HomeBody extends Component{
@@ -49,19 +52,25 @@ class HomeBody extends Component{
     console.log(this.state.bienImob.length);
      let slider;
     this.state.annonces.length!==0 && this.state.bienImob.length!==0? slider= <AnnoncesSlider annonces={this.state.annonces} bienImob={this.state.bienImob}  />:slider=<div>pas d'annonces encore</div>
-    return <div class='home-body'>
-        <div class='home-body-element'><h2 class='welcome-text'>Bienvenue dans Estate.io !</h2></div>
-        <div class='home-body-element'><h1 class='slogan-text'>SOME SLOGAN HERE CUZ I THINK IT WOULDD LOOK COOL</h1></div>
+    return <>
+        <Hero />
+        <div class='home-body'>
         <div class='home-body-element btn-div'>
-          <button class='search-btn' onClick={this.searchBtnHandler}><h3>Rechercher des annonces !</h3></button>
-          <button class='add-btn' onClick={this.addBtnHandler}><h3>Ajouter une annonce</h3></button>
-          <button onClick={this.profileBtnHandler}>profile</button>
+          <button class='add-btn' onClick={this.addBtnHandler}><span>Ajouter une annonce</span></button>
         </div>
+        </div>
+        <Featured />
+        <br>
+        </br>
+        <br>
+        </br>
+        <Heading title='Annonces récentes' subtitle='Les annonces recentes pargategee eoko.' />
+        <br>
+        </br>
        <div>{slider}</div>
-        
        
        
-    </div>
+    </>
 
   }
 

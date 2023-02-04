@@ -1,73 +1,48 @@
 .home-body {
-    margin-top: 20vh;
-    margin-bottom: 20vh;
+    margin-bottom: 4vh;
     margin-left: 5%;
     margin-right: 5%;
     text-align: center;
-    
-}
-
-.welcome-text {
-    color: #67f2a1;
-}
-
-.slogan-text {
-    color: #2d3142;
-}
-
-.home-body-element {
-    
-    margin-top: 2vh;
 }
 
 .btn-div {
-    margin-top: 15vh;
-    margin-bottom: 15vh;
+    margin-top: 4vh;
 }
 
-.search-btn{
-    background-color: #67f2a1;
-    color: white ;
-    border-radius: 2rem;
+.add-btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #27ae60;
     border: none;
-    height: 7vh;
-    width: 50vh;
-    opacity: 0.9;
-    transition: all .2s ease-in-out;
-    margin: 2vh;
-
-}
-
-.add-btn{
-    
-    color: #2d3142 ;
-    border-radius: 2rem;
-    border: none;
-    height: 7vh;
-    width: 50vh;
-    opacity: 0.9;
-    transition: all .2s ease-in-out;
-    margin: 2vh;
-
-}
-
-
-.search-btn:hover { 
-    transform: scale(1.1); 
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    width: 900px;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .add-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .add-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .add-btn:hover span {
+    padding-right: 25px;
+  }
+  
+  .add-btn:hover span:after {
     opacity: 1;
-    
-}
-.add-btn:hover { 
-    transform: scale(1.1); 
-    opacity: 1;
-    
-}
-
-.welcome-text:hover {
-    opacity: 0.7;
-    
-}
-
-.slogan-text:hover{
-    opacity: 0.7;
-}
+    right: 0;
+  }

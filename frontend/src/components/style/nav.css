@@ -1,103 +1,53 @@
-.nav-elements {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    min-height: 5vh;
-    margin-top: 3%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.nav-line{
-    background-color: #2d3142;
-    margin-top: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 5px;
-    border-radius: 45rem;
-}
-.nav-icon{
-    color: #2d3142;
-    font-size: 5vh;
-    padding-right:10pt;
-    
-    
-}
-
-.nav-icons {
-    
-    justify-content: space-between;
-    display:flex;
-    text-align: right;
-    margin-right: 5%;
-    
-}
-
-.nav-btn{
-  background-color:transparent ;
-  border: none; 
-  color: transparent; 
-  cursor: pointer;
+header {
+  background-color: #fff;
+  height: 10vh;
+  box-shadow: 0 5px 30px rgb(0 22 84 / 10%);
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
 }
 
 
-
-.resp {
-    width: 100%;
-    height: auto;
+.flexx {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav-element {
-    
-    width: 50%;
-    
-    
+i {
+  margin: 10px;
+  color: gray;
+  font-size: large;
 }
-
-.logo{
-    float : left ;
-    height : 5vh;
-    width: auto;
+header h4 {
+  font-weight: 500;
+  margin-right: 20px;
 }
-
-.dropdown {
-    position: relative;
-    display: inline-block;
+header .toggle {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  header {
+    padding: 0;
   }
-  
-  .dropdown-content {
+  header .nav .flex {
     display: none;
+  }
+  header .toggle {
+    display: block;
+    margin-top: 20px;
+  }
+  header .small {
     position: absolute;
-    background-color: #ffffff;
-    min-width: 10vh;
-    z-index: 1;
-    
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    padding: 20px;
   }
-  
-  .dropdown-content a {
-    color: #050d2d;
-    padding: 2vh 2vh ;
-    text-decoration: none;
-    display: block;
+  header li a {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #fff;
   }
-  
-  .dropdown-content a:hover {
-    background-color: rgb(222, 255, 243);
-    font-weight: bold;
-    }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-    float: right;
-    
 }
-
-.navbar {
-  overflow: hidden;
-}
-  
-@media only screen and ( max-width:400px ){
-  
-}
-  

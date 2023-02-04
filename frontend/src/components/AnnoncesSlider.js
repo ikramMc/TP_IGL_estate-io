@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import AnnonceSlide from './AnnonceSlide';
 import "./style/AnnoncesSlider.css";
+import Heading from './Heading';
 import { responsive } from "./data";
 //import Popup from './popup';
 import './style/popup.css'

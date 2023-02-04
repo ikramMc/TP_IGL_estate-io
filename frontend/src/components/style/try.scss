@@ -1,54 +1,94 @@
 .yo {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.yo .yoyo {
-    width: 600px;
-    height: 500px;
-    padding: 30px;
-}
-.picker{
-    width: 17px;
-    height: 17px;
-    background-color: red;
-    border-radius: 17px;
-}
-.contentdetails {
-    padding-right: 50px;
-}
-
-.yo .bigtitle {
-    text-align: left;
-    margin-bottom: 1rem;
-    color: #67F2A1;
-}
-
-.yo .bigtitle1{
-    text-align: left;
-}
-
-.yo .simpletext{
-    text-align: left;
-    font-weight: 100;
-}
-
-.yo .t1{
-    text-align: left;
-    font-weight: 700;
-    text-decoration: underline;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-
-.yo .simpletext1{
-    text-align: left;
-}
-
-.yo .trait_dessus
-{
-border-top: 1.3px solid #000;
-width : 600px;
-}
+    background-color:white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .yo .yoyo {
+        width: 600px;
+        height: 420px;
+        padding: 20px;
+    }
+    
+    .yo .contentdetails {
+        width: 900px;
+        margin-bottom: 2rem;
+    }
+    
+    .yo .bigtitle {
+        text-align: left;
+        margin-bottom: 1rem;
+        color: #67F2A1;
+    }
+    
+    .yo .bigtitle1{
+        text-align: left;
+    }
+    
+    .yo .simpletext{
+        text-align: left;
+        font-weight: 100;
+    }
+    
+    .yo .t1{
+        text-align: left;
+        font-weight: 700;
+        text-decoration: underline;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .yo .simpletext1{
+        text-align: left;
+    }
+    
+    .yo .trait_dessus
+    {
+    border-top: 1.3px solid #000;
+    width : 600px;
+    }
+    
+    .yo .invoice-table {
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0px 10px 30px 5px rgba(0,0,0,.1);
+        margin: 25px auto;
+    }
+    
+    .yo .invoice-table thead tr {
+        border-bottom: 1px dashed grey;
+        height: 50px;
+    }
+    
+    .yo .invoice-table thead tr td {
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: #67F2A1;
+        padding: 8px;
+    
+    }
+    
+    .yo .invoice-table tbody tr td {
+        border-bottom: 1px dashed grey;
+    }
+    
+    th {
+        border-bottom: 1px dashed grey;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: grey;
+        padding: 20px;
+        text-align: left;
+        width: 300px;
+    }
+    
+    td{
+       width: 900px; 
+    }
+    
+    tr .map {
+        padding-left: 20%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }

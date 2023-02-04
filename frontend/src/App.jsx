@@ -22,6 +22,8 @@ import {
 import HomePage from './components/homePage';
 import { Component } from 'react';
 import SearchPage from './components/searchPage'
+import ProfilePage from './components/profilePage';
+import Messagerie from './components/messagerie';
 
 
 class App extends Component {
@@ -34,6 +36,8 @@ class App extends Component {
           <Route path="/slider/:annonceId" element={<Try  />} />
           <Route path="/pageuser" element={<HomePage />} />
           <Route path="/searchPage" element={<SearchPage />} />
+          <Route path="/notifications" element={<Messagerie/>} />
+          <Route path="/Profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </div>

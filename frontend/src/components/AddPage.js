@@ -2,6 +2,7 @@ import { Component } from "react";
 import React from "react";
 import Footer from './footer';
 import Nav from './nav';
+import Back from './Back';
 import "./style/AddPage.css"
 import { Annonce } from "../entities/Annonce";
 import MapPicker from 'react-google-map-picker';
@@ -58,6 +59,7 @@ class AddPage extends Component{
    let types=["terrain","terrain agricole","appartement","bungalow","maison"];
   return  <div className="addpage">
   <Nav />
+  <Back />
   <div  className="body">
 
       <div className="container">

@@ -69,11 +69,9 @@
     
 }
 
-.modify-btn {
+.profile .profile-info .modify-btn {
     background-color: #67f1a4;
     border-radius: 2rem;
-    width: 30vh;
-    height: 5vh;
     border: 0;
     margin-right: 2vh;
     color: white;

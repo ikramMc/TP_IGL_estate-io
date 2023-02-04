@@ -15,9 +15,8 @@ class ProfilePage extends Component{
   render()
   {
     return <div>
-        <NavP/>
+        <Nav/>
         <ProfileBody/>
-        <button onClick={this.getData}>click</button>
         <Footer/>
          </div>
   }

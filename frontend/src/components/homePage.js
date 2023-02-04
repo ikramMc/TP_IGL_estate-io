@@ -16,7 +16,6 @@ class HomePage extends Component{
   render()
   {
     return <div>
-        <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={this.logOut} onFailure={console.log("fail")}/>
         <Nav/>
         <HomeBody/>
         <Footer/>

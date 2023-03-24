@@ -6,7 +6,7 @@ import HomeBody from './homeBody';
 import {  GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { AuthManager } from '../Controllers/authManager';
-const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
+
 class HomePage extends Component{
   logOut(){
    const authManager=new AuthManager();

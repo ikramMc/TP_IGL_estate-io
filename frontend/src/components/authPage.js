@@ -9,7 +9,7 @@ import Apropos from './Apropos';
 //import { useNavigate } from 'react-router-dom';
 import { User } from '../entities/User';
 import { AuthManager } from '../Controllers/authManager';
-const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
+
 class AuthPage extends Component {
   constructor(){
     super();

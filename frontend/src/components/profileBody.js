@@ -6,7 +6,7 @@ import AnnoncesSlider from './AnnoncesSlider';
 import {  GoogleLogout } from 'react-google-login';
 import { AuthManager } from '../Controllers/authManager';
 import Heading from './Heading';
-const clientId = '599313117054-mm6kj6ljvd0frt6553sgbqqcmq6mahqf.apps.googleusercontent.com';
+
 class ProfileBody extends Component{
     constructor()
     {
